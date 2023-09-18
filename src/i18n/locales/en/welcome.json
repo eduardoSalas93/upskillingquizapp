@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome",
+  "toName": "to Intellecta Quiz",
+  "instructionText": "Enjoy the Intellecta experience, tap on the button with the difficulty you want to play",
+  "easyBtnTitle": "Warm Up",
+  "easyBtnDesc": "Easy questions to warming up and go to the next level",
+  "mediumBtnTitle": "Mid Level",
+  "mediumBtnDesc": "Questions with difficulty a little higher. Get Ready",
+  "hardBtnTitle": "High level",
+  "hardBtnDesc": "Questions with high difficulty. Get Ready",
+  "defaultBtnTitle": "Pro level",
+  "defaultBtnDesc": "Questions with any difficulty. Good luck"
+}

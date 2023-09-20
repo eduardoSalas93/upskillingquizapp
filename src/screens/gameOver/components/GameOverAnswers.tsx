@@ -4,18 +4,18 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-} from "react-native";
-import { Colors } from "../../../theme/globalStyles/colors";
-import { DecodeText } from "../../../helpers/decodeText";
-import { GameOveranswerBg } from "../../../helpers/answerBackgroundColor";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
-import { Ionicons } from "@expo/vector-icons";
-import { globalStyles } from "../../../theme/globalStyles/globalStyles";
+} from 'react-native'
+import { Colors } from '../../../theme/globalStyles/colors'
+import { DecodeText } from '../../../helpers/decodeText'
+import { GameOveranswerBg } from '../../../helpers/answerBackgroundColor'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../../../redux/store'
+import { Ionicons } from '@expo/vector-icons'
+import { globalStyles } from '../../../theme/globalStyles/globalStyles'
 
-type Props = {
-  handleShowAnswers: () => void;
-};
+interface Props {
+  handleShowAnswers: () => void
+}
 
 const styles = StyleSheet.create({
   backArrowContainer: {
@@ -24,49 +24,49 @@ const styles = StyleSheet.create({
   answerCardContainer: {
     backgroundColor: Colors.white,
     padding: 13,
-    alignItems: "center",
+    alignItems: 'center',
     borderRadius: 8,
   },
   questionText: {
     fontSize: 16,
   },
   answersRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
   answerContainer: {
     borderWidth: 2,
     backgroundColor: Colors.white,
     padding: 10,
-    alignItems: "center",
+    alignItems: 'center',
     borderRadius: 8,
     marginVertical: 10,
-    width: "40%",
+    width: '40%',
     marginHorizontal: 5,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   backBtn: {
     width: 40,
     height: 40,
     backgroundColor: Colors.secundary_grey,
     borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: 10,
   },
-});
+})
 
 const GameOverAnswers: React.FC<Props> = ({ handleShowAnswers }) => {
   const { answeredQuestions } = useSelector(
     (state: RootState) => state.questions
-  );
+  )
 
   return (
     <View>
       <View style={styles.backArrowContainer}>
         <TouchableOpacity onPress={handleShowAnswers} style={styles.backBtn}>
-          <Ionicons name="md-chevron-back" size={24} color="black" />
+          <Ionicons name='md-chevron-back' size={24} color='black' />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -98,7 +98,7 @@ const GameOverAnswers: React.FC<Props> = ({ handleShowAnswers }) => {
                     >
                       <Text>{DecodeText(item2)}</Text>
                     </View>
-                  );
+                  )
                 })}
               </View>
             </View>
@@ -107,7 +107,7 @@ const GameOverAnswers: React.FC<Props> = ({ handleShowAnswers }) => {
         keyExtractor={(item) => item.question}
       />
     </View>
-  );
-};
+  )
+}
 
-export default GameOverAnswers;
+export default GameOverAnswers

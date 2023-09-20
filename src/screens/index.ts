@@ -1,8 +1,8 @@
-import LoginScreen from "./auth/LoginScreen";
-import GameOverScreen from "./gameOver/GameOverScreen";
-import MainScreen from "./main/MainScreen";
-import QuestionScreen from "./question/QuestionScreen";
-import WelcomeScreen from "./welcome/WelcomeScreen";
+import LoginScreen from './auth/LoginScreen'
+import GameOverScreen from './gameOver/GameOverScreen'
+import MainScreen from './main/MainScreen'
+import QuestionScreen from './question/QuestionScreen'
+import WelcomeScreen from './welcome/WelcomeScreen'
 
 export {
   LoginScreen,
@@ -10,4 +10,4 @@ export {
   GameOverScreen,
   QuestionScreen,
   WelcomeScreen,
-};
+}

@@ -1,30 +1,30 @@
-import { Box, Text, Stack, NativeBaseProvider } from "native-base";
-import { Pressable, StyleSheet, View } from "react-native";
-import { Colors } from "../../theme/globalStyles/colors";
+import { Box, Text, Stack, NativeBaseProvider } from 'native-base'
+import { Pressable, StyleSheet, View } from 'react-native'
+import { Colors } from '../../theme/globalStyles/colors'
 import {
   QuestionsAnswerBg,
   QuestionsAnswerTextColor,
-} from "../../helpers/answerBackgroundColor";
-import { globalStyles } from "../../theme/globalStyles/globalStyles";
+} from '../../helpers/answerBackgroundColor'
+import { globalStyles } from '../../theme/globalStyles/globalStyles'
 
-type Props = {
-  answer: string;
-  answerSelected: string | null;
-  correctAnswer: string | null;
-  index: number;
-  answerIndex: number | null;
-  handleAnswerSelected: (answer: string, index: number) => void;
-};
+interface Props {
+  answer: string
+  answerSelected: string | null
+  correctAnswer: string | null
+  index: number
+  answerIndex: number | null
+  handleAnswerSelected: (answer: string, index: number) => void
+}
 
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: Colors.primary_grey,
-    width: "80%",
+    width: '80%',
     borderRadius: 5,
   },
-});
+})
 
 const AnswerItemCard: React.FC<Props> = ({
   answer,
@@ -37,7 +37,7 @@ const AnswerItemCard: React.FC<Props> = ({
   return (
     <View style={{ flex: 1 }}>
       <NativeBaseProvider>
-        <Box alignItems="center">
+        <Box alignItems='center'>
           <Pressable
             style={[
               styles.cardContainer,
@@ -55,9 +55,9 @@ const AnswerItemCard: React.FC<Props> = ({
             ]}
             onPress={() => handleAnswerSelected(answer, index)}
           >
-            <Stack p="4" space={3}>
+            <Stack p='4' space={3}>
               <Text
-                fontWeight="400"
+                fontWeight='400'
                 style={{
                   color: QuestionsAnswerTextColor(
                     answerIndex,
@@ -74,7 +74,7 @@ const AnswerItemCard: React.FC<Props> = ({
         </Box>
       </NativeBaseProvider>
     </View>
-  );
-};
+  )
+}
 
-export default AnswerItemCard;
+export default AnswerItemCard

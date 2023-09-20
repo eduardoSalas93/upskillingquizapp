@@ -1,31 +1,31 @@
-import { StyleSheet, View } from "react-native";
-import { RouteNames, RouteParamsList } from "../../types/route";
+import { StyleSheet, View } from 'react-native'
+import { RouteNames, RouteParamsList } from '../../types/route'
 import {
   NativeStackScreenProps,
   createNativeStackNavigator,
-} from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import WelcomeScreen from "../welcome/WelcomeScreen";
-import QuestionScreen from "../question/QuestionScreen";
-import GameOverScreen from "../gameOver/GameOverScreen";
-import { Colors } from "../../theme/globalStyles/colors";
+} from '@react-navigation/native-stack'
+import { Ionicons } from '@expo/vector-icons'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import WelcomeScreen from '../welcome/WelcomeScreen'
+import QuestionScreen from '../question/QuestionScreen'
+import GameOverScreen from '../gameOver/GameOverScreen'
+import { Colors } from '../../theme/globalStyles/colors'
 
-const Tab = createBottomTabNavigator<RouteParamsList>();
-const Stack = createNativeStackNavigator<RouteParamsList>();
+const Tab = createBottomTabNavigator<RouteParamsList>()
+const Stack = createNativeStackNavigator<RouteParamsList>()
 
-type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Main>;
+type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Main>
 
 const styles = StyleSheet.create({
   iconContainer: {
-    justifyContent: "center",
-    alignContent: "center",
+    justifyContent: 'center',
+    alignContent: 'center',
     paddingTop: 10,
   },
-});
+})
 
 const CustomTabButton = (props: any) => {
-  const { focused, iconFocused, icon } = props;
+  const { focused, iconFocused, icon } = props
 
   return (
     <View style={styles.iconContainer}>
@@ -35,8 +35,8 @@ const CustomTabButton = (props: any) => {
         <Ionicons name={icon} size={30} color={Colors.primary_grey} />
       )}
     </View>
-  );
-};
+  )
+}
 
 const MainScreen: React.FC<Props> = () => {
   return (
@@ -54,7 +54,7 @@ const MainScreen: React.FC<Props> = () => {
               headerShown: false,
               tabBarStyle: {
                 height: 50,
-                position: "absolute",
+                position: 'absolute',
                 bottom: 16,
                 right: 16,
                 left: 16,
@@ -73,8 +73,8 @@ const MainScreen: React.FC<Props> = () => {
                   tabBarIcon: ({ focused }) => (
                     <CustomTabButton
                       focused={focused}
-                      iconFocused="md-home"
-                      icon="md-home-outline"
+                      iconFocused='md-home'
+                      icon='md-home-outline'
                     />
                   ),
                 }}
@@ -86,7 +86,7 @@ const MainScreen: React.FC<Props> = () => {
       <Stack.Screen name={RouteNames.Question} component={QuestionScreen} />
       <Stack.Screen name={RouteNames.GameOver} component={GameOverScreen} />
     </Stack.Navigator>
-  );
-};
+  )
+}
 
-export default MainScreen;
+export default MainScreen

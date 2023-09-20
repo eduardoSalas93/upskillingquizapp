@@ -1,19 +1,19 @@
-import { View, Text, StyleSheet } from "react-native";
-import { globalStyles } from "../../../theme/globalStyles/globalStyles";
-import { Colors } from "../../../theme/globalStyles/colors";
-import QuestionsText from "../../../i18n/locales/en/questions.json";
-type Props = {
-  questionsQty: number;
-  points: number;
-};
+import { View, Text, StyleSheet } from 'react-native'
+import { globalStyles } from '../../../theme/globalStyles/globalStyles'
+import { Colors } from '../../../theme/globalStyles/colors'
+import QuestionsText from '../../../i18n/locales/en/questions.json'
+interface Props {
+  questionsQty: number
+  points: number
+}
 
 const styles = StyleSheet.create({
   headerContainer: {
     marginTop: 15,
-    alignItems: "center",
+    alignItems: 'center',
     paddingHorizontal: 16,
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   questionsQtyLabel: {
     padding: 8,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark_grey,
   },
   textFont: { color: Colors.white, fontSize: 16 },
-});
+})
 
 const Header: React.FC<Props> = ({ questionsQty, points }) => {
   return (
@@ -42,7 +42,7 @@ const Header: React.FC<Props> = ({ questionsQty, points }) => {
         </Text>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

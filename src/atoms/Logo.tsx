@@ -1,22 +1,20 @@
-import { View, Image, StyleSheet } from "react-native";
-
-const IntellectaQuizLogo = require("../assets/IntellectaQuizLogo.png");
+import { View, Image, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   logoContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
     flex: 4,
-    alignItems: "center",
+    alignItems: 'center',
   },
-});
+})
 
 const Logo = () => {
   return (
     <View style={styles.logoContainer}>
-      <Image source={IntellectaQuizLogo} />
+      <Image source={require('../assets/IntellectaQuizLogo.png')} />
     </View>
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo

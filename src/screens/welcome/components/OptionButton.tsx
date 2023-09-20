@@ -1,23 +1,17 @@
-import {
-  Pressable,
-  Text,
-  Box,
-  HStack,
-  NativeBaseProvider,
-} from "native-base";
-import { Colors } from "../../../theme/globalStyles/colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
+import { Pressable, Text, Box, HStack, NativeBaseProvider } from 'native-base'
+import { Colors } from '../../../theme/globalStyles/colors'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { StyleSheet } from 'react-native'
 
-type Props = {
-  badge: string;
-  bg: string;
-  desc: string;
-  image: any;
-  handleQuestions: (difficulty: string) => void;
-};
+interface Props {
+  badge: string
+  bg: string
+  desc: string
+  image: any
+  handleQuestions: (difficulty: string) => void
+}
 
-const MIN_HEIGHT = 180;
+const MIN_HEIGHT = 180
 
 const OptionButton: React.FC<Props> = ({
   badge,
@@ -30,10 +24,10 @@ const OptionButton: React.FC<Props> = ({
     <NativeBaseProvider>
       <Pressable
         onPress={() => handleQuestions(badge)}
-        rounded="8"
-        borderWidth="1"
-        borderColor="coolGray.300"
-        shadow="3"
+        rounded='8'
+        borderWidth='1'
+        borderColor='coolGray.300'
+        shadow='3'
         bg={Colors.white}
         m={2}
         minHeight={MIN_HEIGHT}
@@ -44,25 +38,25 @@ const OptionButton: React.FC<Props> = ({
           <MaterialCommunityIcons name={image} size={30} color={Colors.white} />
         </HStack>
         <Box style={styles.bodyCard}>
-          <Text fontSize="md" style={styles.descText}>
+          <Text fontSize='md' style={styles.descText}>
             {desc}
           </Text>
         </Box>
       </Pressable>
     </NativeBaseProvider>
-  );
-};
+  )
+}
 
-export default OptionButton;
+export default OptionButton
 
 const styles = StyleSheet.create({
   cardHeaderContainer: {
     height: 50,
     borderBottomEndRadius: 10,
     borderBottomStartRadius: 10,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
     paddingHorizontal: 15,
     borderTopEndRadius: 4,
     borderTopStartRadius: 4,
@@ -70,12 +64,12 @@ const styles = StyleSheet.create({
   headerText: {
     color: Colors.white,
     fontSize: 19,
-    fontWeight: "600",
+    fontWeight: '600',
   },
-  bodyCard: { justifyContent: "center", flex: 1 },
+  bodyCard: { justifyContent: 'center', flex: 1 },
   descText: {
     paddingHorizontal: 8,
-    textAlign: "center",
+    textAlign: 'center',
     color: Colors.dark_grey,
   },
-});
+})

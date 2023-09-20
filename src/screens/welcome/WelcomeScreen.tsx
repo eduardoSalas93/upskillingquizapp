@@ -1,4 +1,4 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import {
   View,
   SafeAreaView,
@@ -6,20 +6,20 @@ import {
   StyleSheet,
   FlatList,
   Pressable,
-} from "react-native";
-import { RouteNames, RouteParamsList } from "../../types/route";
-import { AppDispatch, RootState } from "../../redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { getQuestions, saveDifficulty } from "../../redux/questions";
-import WelcomingText from "./components/WelcomingText";
-import OptionButton from "./components/OptionButton";
-import { ButtonsOptions } from "../../data/ButtonOptions";
-import { Colors } from "../../theme/globalStyles/colors";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { logOut } from "../../redux/user";
+} from 'react-native'
+import { RouteNames, RouteParamsList } from '../../types/route'
+import { AppDispatch, RootState } from '../../redux/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { getQuestions, saveDifficulty } from '../../redux/questions'
+import WelcomingText from './components/WelcomingText'
+import OptionButton from './components/OptionButton'
+import { ButtonsOptions } from '../../data/ButtonOptions'
+import { Colors } from '../../theme/globalStyles/colors'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { logOut } from '../../redux/user'
 
-type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Welcome>;
+type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Welcome>
 
 const styles = StyleSheet.create({
   container: {
@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: Colors.red,
     borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-});
+})
 
 const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const username = useSelector((state: RootState) => state.userInfo.username);
+  const dispatch = useDispatch<AppDispatch>()
+  const username = useSelector((state: RootState) => state.userInfo.username)
 
   /**
    * @author Eduardo Salas
@@ -50,10 +50,10 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that navigates to question screen and fetch the questions
    */
   const handleQuestions = (difficulty: string) => {
-    dispatch(saveDifficulty(difficulty.toLowerCase()));
-    dispatch(getQuestions(difficulty.toLowerCase()));
-    navigation.navigate(RouteNames.Question);
-  };
+    dispatch(saveDifficulty(difficulty.toLowerCase()))
+    dispatch(getQuestions(difficulty.toLowerCase()))
+    navigation.navigate(RouteNames.Question)
+  }
 
   /**
    * @author Eduardo Salas
@@ -63,12 +63,12 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    */
   const removeData = async () => {
     try {
-      await AsyncStorage.removeItem("@username");
+      await AsyncStorage.removeItem('@username')
     } catch (error) {
       // Error saving data
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
   /**
    * @author Eduardo Salas
    * @date 18/09/20223
@@ -76,19 +76,19 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that logs out and clean uuser info
    */
   const handleLogout = () => {
-    removeData();
-    dispatch(logOut());
-    navigation.navigate(RouteNames.Login);
-  };
+    removeData()
+    dispatch(logOut())
+    navigation.navigate(RouteNames.Login)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.bodyContainer}>
-        <View style={{ alignItems: "flex-end", paddingHorizontal: 16 }}>
+        <View style={{ alignItems: 'flex-end', paddingHorizontal: 16 }}>
           <View style={styles.logOutBtn}>
             <Pressable onPress={handleLogout}>
               <MaterialCommunityIcons
-                name="logout"
+                name='logout'
                 size={20}
                 color={Colors.white}
               />
@@ -115,7 +115,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
         </View>
       </View>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default WelcomeScreen;
+export default WelcomeScreen

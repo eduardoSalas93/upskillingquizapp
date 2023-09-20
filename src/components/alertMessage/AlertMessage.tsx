@@ -7,54 +7,54 @@ import {
   Box,
   Text,
   Center,
-} from "native-base";
-import { MessageStatus } from "../../types/messageState";
+} from 'native-base'
+import { MessageStatus } from '../../types/messageState'
 
 interface Props {
-  title?: string;
-  message?: string;
-  status?: MessageStatus;
-  handleCloseAlert?: () => void;
+  title?: string
+  message?: string
+  status?: MessageStatus
+  handleCloseAlert?: () => void
 }
 
 const AlertMessage: React.FC<Props> = ({
-  title = "",
-  message = "",
-  status = "warning",
+  title = '',
+  message = '',
+  status = 'warning',
   handleCloseAlert,
 }) => {
   return (
     <Center>
-      <Alert maxW="400" status={status} colorScheme="info" marginTop={35}>
-        <VStack space={2} flexShrink={1} w="100%">
+      <Alert maxW='400' status={status} colorScheme='info' marginTop={35}>
+        <VStack space={2} flexShrink={1} w='100%'>
           <HStack
             flexShrink={1}
             space={2}
-            alignItems="center"
-            justifyContent="space-between"
+            alignItems='center'
+            justifyContent='space-between'
           >
-            <HStack flexShrink={1} space={2} alignItems="center">
+            <HStack flexShrink={1} space={2} alignItems='center'>
               <Alert.Icon />
-              <Text fontSize="md" fontWeight="medium" color="coolGray.800">
+              <Text fontSize='md' fontWeight='medium' color='coolGray.800'>
                 {title}
               </Text>
             </HStack>
             <IconButton
-              variant="unstyled"
+              variant='unstyled'
               _focus={{
                 borderWidth: 0,
               }}
               onPress={handleCloseAlert}
-              icon={<CloseIcon size="3" />}
+              icon={<CloseIcon size='3' />}
               _icon={{
-                color: "coolGray.600",
+                color: 'coolGray.600',
               }}
             />
           </HStack>
           <Box
-            pl="6"
+            pl='6'
             _text={{
-              color: "coolGray.600",
+              color: 'coolGray.600',
             }}
           >
             {message}
@@ -62,7 +62,7 @@ const AlertMessage: React.FC<Props> = ({
         </VStack>
       </Alert>
     </Center>
-  );
-};
+  )
+}
 
-export default AlertMessage;
+export default AlertMessage

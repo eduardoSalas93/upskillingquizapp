@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { Colors } from "./colors";
+import { StyleSheet } from 'react-native'
+import { Colors } from './colors'
 
 export const globalStyles = StyleSheet.create({
   defaultShadow: {
@@ -12,4 +12,4 @@ export const globalStyles = StyleSheet.create({
       height: 3,
     },
   },
-});
+})

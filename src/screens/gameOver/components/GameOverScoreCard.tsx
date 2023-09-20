@@ -1,26 +1,24 @@
-import { Pressable, View, Text, StyleSheet } from "react-native";
-import { Colors } from "../../../theme/globalStyles/colors";
-import { globalStyles } from "../../../theme/globalStyles/globalStyles";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import GameOverScreenText from "../../../i18n/locales/en/game-over.json";
+import { Pressable, View, Text, StyleSheet } from 'react-native'
+import { Colors } from '../../../theme/globalStyles/colors'
+import { globalStyles } from '../../../theme/globalStyles/globalStyles'
+import { FontAwesome5, Ionicons, Feather } from '@expo/vector-icons'
+import GameOverScreenText from '../../../i18n/locales/en/game-over.json'
 import {
   GameOverDescription,
   GameOverSubtitle,
-} from "../../../helpers/gameOverText";
+} from '../../../helpers/gameOverText'
 
-type Props = {
-  points: number;
-  handleTryNewQuiz: () => void;
-  handleGoHome: () => void;
-  handleShowAnswers: () => void;
-};
+interface Props {
+  points: number
+  handleTryNewQuiz: () => void
+  handleGoHome: () => void
+  handleShowAnswers: () => void
+}
 
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: Colors.white,
-    width: "80%",
+    width: '80%',
     borderRadius: 8,
   },
   titleContainer: {
@@ -28,36 +26,36 @@ const styles = StyleSheet.create({
     padding: 16,
     borderTopRightRadius: 8,
     borderTopLeftRadius: 8,
-    alignItems: "center",
+    alignItems: 'center',
   },
   titleFont: {
     fontSize: 18,
     color: Colors.white,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   bodyContainer: {
     padding: 16,
-    alignItems: "center",
+    alignItems: 'center',
   },
   subtitlel: {
     fontSize: 24,
     color: Colors.primary_green,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   description: {
     fontSize: 16,
     color: Colors.black,
-    textAlign: "center",
+    textAlign: 'center',
   },
   scoreContainer: {
     padding: 16,
-    alignItems: "center",
+    alignItems: 'center',
   },
   scoreContainerBody: {
     backgroundColor: Colors.secundary_grey,
-    width: "90%",
+    width: '90%',
     padding: 20,
-    alignItems: "center",
+    alignItems: 'center',
     borderRadius: 15,
   },
   scoreLabel: {
@@ -67,25 +65,25 @@ const styles = StyleSheet.create({
   score: {
     fontSize: 35,
     color: Colors.primary_blue,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   roundedButtonIcon: {
     marginRight: 30,
     width: 40,
     height: 40,
     borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   checkAnswersBtnContainer: {
     marginTop: 15,
     backgroundColor: Colors.primary_grey,
     borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 16,
   },
-});
+})
 
 const GameOverScoreCard: React.FC<Props> = ({
   points,
@@ -111,7 +109,7 @@ const GameOverScoreCard: React.FC<Props> = ({
         </View>
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             marginTop: 15,
           }}
         >
@@ -122,7 +120,7 @@ const GameOverScoreCard: React.FC<Props> = ({
             ]}
           >
             <Pressable onPress={handleGoHome}>
-              <FontAwesome5 name="home" size={20} color={Colors.white} />
+              <FontAwesome5 name='home' size={20} color={Colors.white} />
             </Pressable>
           </View>
 
@@ -130,16 +128,16 @@ const GameOverScoreCard: React.FC<Props> = ({
             style={[styles.roundedButtonIcon, { backgroundColor: Colors.red }]}
           >
             <Pressable onPress={handleTryNewQuiz}>
-              <Ionicons name="reload-sharp" size={20} color={Colors.white} />
+              <Ionicons name='reload-sharp' size={20} color={Colors.white} />
             </Pressable>
           </View>
         </View>
         <View style={styles.checkAnswersBtnContainer}>
           <Pressable
             onPress={handleShowAnswers}
-            style={{ flexDirection: "row", alignItems: "center" }}
+            style={{ flexDirection: 'row', alignItems: 'center' }}
           >
-            <Feather name="book-open" size={20} color={Colors.white} />
+            <Feather name='book-open' size={20} color={Colors.white} />
             <Text style={{ marginStart: 10, color: Colors.white }}>
               {GameOverScreenText.checkAnswersBtn}
             </Text>
@@ -147,7 +145,7 @@ const GameOverScoreCard: React.FC<Props> = ({
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default GameOverScoreCard;
+export default GameOverScoreCard

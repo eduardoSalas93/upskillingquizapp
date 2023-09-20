@@ -1,36 +1,34 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import {
   FlatList,
   ImageBackground,
   Platform,
   SafeAreaView,
   View,
-} from "react-native";
-import { RouteNames, RouteParamsList } from "../../types/route";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import QuestionCard from "../../components/questionAnswerCard/QuestionCard";
-import { Colors } from "../../theme/globalStyles/colors";
-import AnswerItemCard from "../../components/questionAnswerCard/AnswerItemCard";
-import DividerAtm from "../../atoms/Divider";
-import SpinnerAtm from "../../atoms/spininer";
-import Header from "./components/Header";
-import { DecodeText } from "../../helpers/decodeText";
+} from 'react-native'
+import { RouteNames, RouteParamsList } from '../../types/route'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
+import QuestionCard from '../../components/questionAnswerCard/QuestionCard'
+import { Colors } from '../../theme/globalStyles/colors'
+import AnswerItemCard from '../../components/questionAnswerCard/AnswerItemCard'
+import DividerAtm from '../../atoms/Divider'
+import SpinnerAtm from '../../atoms/spininer'
+import Header from './components/Header'
+import { DecodeText } from '../../helpers/decodeText'
 import {
   addCurrenQuestion,
   addPoints,
   changeQuestionIndex,
-} from "../../redux/questions";
-import { useEffect, useState } from "react";
-import { QuestionAnsweredItem } from "../../types/question";
+} from '../../redux/questions'
+import { useEffect, useState } from 'react'
+import { QuestionAnsweredItem } from '../../types/question'
 
-type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Question>;
-
-const questionBg = require("../../assets/questionsBg.avif");
+type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Question>
 
 const QuestionScreen: React.FC<Props> = ({ navigation }) => {
-  const [answerSelected, setAnswerSelected] = useState<string | null>(null);
-  const [answerIndex, setAnswerIndex] = useState<number | null>(null);
+  const [answerSelected, setAnswerSelected] = useState<string | null>(null)
+  const [answerIndex, setAnswerIndex] = useState<number | null>(null)
   const {
     points,
     isLoading,
@@ -38,14 +36,14 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
     questionIndex,
     currentQuestionCorrectAnswer,
     questions,
-  } = useSelector((state: RootState) => state.questions);
+  } = useSelector((state: RootState) => state.questions)
 
-  const dispatch = useDispatch();
-  const [questionsQty, setquestionsQty] = useState(0);
+  const dispatch = useDispatch()
+  const [questionsQty, setquestionsQty] = useState(0)
 
   useEffect(() => {
-    if (questions.length > 0) setquestionsQty(questions.length);
-  }, [questions]);
+    if (questions.length > 0) setquestionsQty(questions.length)
+  }, [questions])
 
   /**
    * @author Eduardo Salas
@@ -54,23 +52,23 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that evaluates if the answer selected is correct or incorrect and updates the questionIndex
    */
   const handleAnswerSelected = (answer: string, index: number | null) => {
-    setAnswerSelected(answer);
-    setAnswerIndex(index);
+    setAnswerSelected(answer)
+    setAnswerIndex(index)
     if (answer === DecodeText(currentQuestionCorrectAnswer)) {
-      dispatch(addPoints());
+      dispatch(addPoints())
     }
 
     const questionAnswered: QuestionAnsweredItem | null = currentQuestion && {
       ...currentQuestion,
       answerSelected: answer,
-    };
+    }
     setTimeout(() => {
-      setAnswerSelected(null);
-      setAnswerIndex(null);
-      dispatch(changeQuestionIndex(questionAnswered));
-      setquestionsQty((prev) => prev - 1);
-    }, 1500);
-  };
+      setAnswerSelected(null)
+      setAnswerIndex(null)
+      dispatch(changeQuestionIndex(questionAnswered))
+      setquestionsQty((prev) => prev - 1)
+    }, 1500)
+  }
 
   /**
    * @author Eduardo Salas
@@ -78,13 +76,13 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that detects when the questionIndex has changed and update the question to the next one
    */
   useEffect(() => {
-    if (!currentQuestion) return;
+    if (!currentQuestion) return
     if (questionIndex < 20) {
-      dispatch(addCurrenQuestion());
+      dispatch(addCurrenQuestion())
     } else {
-      navigation.navigate(RouteNames.GameOver);
+      navigation.navigate(RouteNames.GameOver)
     }
-  }, [questionIndex]);
+  }, [questionIndex])
 
   /**
    * @author Eduardo Salas
@@ -93,7 +91,7 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
    */
 
   if (isLoading) {
-    return <SpinnerAtm />;
+    return <SpinnerAtm />
   }
 
   return (
@@ -104,8 +102,11 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
         backgroundColor: Colors.white,
       }}
     >
-      <ImageBackground source={questionBg} style={{ flex: 1 }}>
-        <View style={{ flex: 1, justifyContent: "flex-start" }}>
+      <ImageBackground
+        source={require('../../assets/questionsBg.avif')}
+        style={{ flex: 1 }}
+      >
+        <View style={{ flex: 1, justifyContent: 'flex-start' }}>
           <Header points={points} questionsQty={questionsQty} />
           <DividerAtm />
           <View style={{ flex: 3, paddingTop: 40 }}>
@@ -133,7 +134,7 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
         </View>
       </ImageBackground>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default QuestionScreen;
+export default QuestionScreen

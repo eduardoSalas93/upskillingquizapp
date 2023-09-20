@@ -1,4 +1,4 @@
-import { Colors } from "../theme/globalStyles/colors";
+import { Colors } from '../theme/globalStyles/colors'
 
 /**
  * @author Eduardo Salas
@@ -13,15 +13,15 @@ export const GameOveranswerBg = (
 ) => {
   switch (true) {
     case answerSelected === answer && answerSelected === correctAnswer:
-      return Colors.primary_green;
+      return Colors.primary_green
     case answerSelected === answer && answerSelected !== correctAnswer:
-      return Colors.red;
+      return Colors.red
     case answerSelected !== answer && answer === correctAnswer:
-      return Colors.primary_green;
+      return Colors.primary_green
     default:
-      return Colors.white;
+      return Colors.white
   }
-};
+}
 
 /**
  * @author Eduardo Salas
@@ -37,23 +37,23 @@ export const QuestionsAnswerBg = (
   answer: string
 ) => {
   if (indexSelected === null) {
-    return Colors.white;
+    return Colors.white
   }
 
   if (indexSelected === index) {
     if (answerSelected === correctAnswer) {
-      return Colors.primary_green;
+      return Colors.primary_green
     } else {
-      return Colors.red;
+      return Colors.red
     }
   }
 
   if (answer === correctAnswer) {
-    return Colors.primary_green;
+    return Colors.primary_green
   }
 
-  return Colors.white;
-};
+  return Colors.white
+}
 /**
  * @author Eduardo Salas
  * @date 18/09/2023
@@ -67,13 +67,13 @@ export const QuestionsAnswerTextColor = (
   answer: string
 ) => {
   if (indexSelected === null) {
-    return Colors.black;
+    return Colors.black
   }
   if (indexSelected === index) {
-    return Colors.white;
+    return Colors.white
   }
-  return answer === correctAnswer ? Colors.white : Colors.black;
-};
+  return answer === correctAnswer ? Colors.white : Colors.black
+}
 /**
  * @author Eduardo Salas
  * @date 18/09/2023
@@ -82,11 +82,11 @@ export const QuestionsAnswerTextColor = (
  */
 export const QuestionCardBorderColor = (difficulty: string | undefined) => {
   switch (difficulty) {
-    case "easy":
-      return Colors.primary_blue;
-    case "medium":
-      return Colors.secondary_green;
+    case 'easy':
+      return Colors.primary_blue
+    case 'medium':
+      return Colors.secondary_green
     default:
-      return Colors.secundary_blue;
+      return Colors.secundary_blue
   }
-};
+}

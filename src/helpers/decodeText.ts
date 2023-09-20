@@ -1,4 +1,4 @@
-const he = require("he");
+const he = require('he')
 
 /**
  * @author Eduardo Salas
@@ -8,7 +8,7 @@ const he = require("he");
  */
 export const DecodeText = (text: string | undefined) => {
   if (!text) {
-    return "";
+    return ''
   }
-  return he.decode(text);
-};
+  return he.decode(text)
+}

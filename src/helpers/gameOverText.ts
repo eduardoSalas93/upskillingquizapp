@@ -1,4 +1,4 @@
-import GameOverScreenText from "../i18n/locales/en/game-over.json";
+import GameOverScreenText from '../i18n/locales/en/game-over.json'
 
 /**
  * @author Eduardo Salas
@@ -8,13 +8,13 @@ import GameOverScreenText from "../i18n/locales/en/game-over.json";
  */
 export const GameOverSubtitle = (points: number) => {
   if (points < 70) {
-    return GameOverScreenText.subTitle60s;
+    return GameOverScreenText.subTitle60s
   } else if (points < 90) {
-    return GameOverScreenText.subTitle70s;
+    return GameOverScreenText.subTitle70s
   } else {
-    return GameOverScreenText.subTitle90s;
+    return GameOverScreenText.subTitle90s
   }
-};
+}
 
 /**
  * @author Eduardo Salas
@@ -24,10 +24,10 @@ export const GameOverSubtitle = (points: number) => {
  */
 export const GameOverDescription = (points: number) => {
   if (points < 70) {
-    return GameOverScreenText.description60s;
+    return GameOverScreenText.description60s
   } else if (points < 90) {
-    return GameOverScreenText.description70s;
+    return GameOverScreenText.description70s
   } else {
-    return GameOverScreenText.descrioption90s;
+    return GameOverScreenText.descrioption90s
   }
-};
+}

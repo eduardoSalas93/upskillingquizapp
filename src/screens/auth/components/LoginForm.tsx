@@ -20,6 +20,7 @@ import { MessageStatus } from '../../../types/messageState'
 import { logIn } from '../../../redux/user'
 import { Colors } from '../../../theme/globalStyles/colors'
 import AuthText from '../../../i18n/locales/en/auth.json'
+import { globalStyles } from '../../../theme/globalStyles/globalStyles'
 
 type NavProps = NativeStackScreenProps<RouteParamsList, RouteNames.Login>
 interface Props {
@@ -36,14 +37,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 35,
     borderColor: Colors.secondary_green,
-    elevation: 4,
-    shadowColor: Colors.black,
-    shadowRadius: 5,
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    shadowOpacity: 0.25,
   },
   input: {
     height: 45,
@@ -147,7 +140,7 @@ const LoginForm: React.FC<Props> = ({ navigation }) => {
   return (
     <NativeBaseProvider>
       <Box style={styles.boodyContainer}>
-        <Box style={styles.formcard}>
+        <Box style={[globalStyles.defaultShadow, styles.formcard]}>
           <Stack space={4} w='100%' alignItems='center'>
             <Text>Hola</Text>
 

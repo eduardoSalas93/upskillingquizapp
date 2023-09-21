@@ -3,13 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 export interface UserState {
   username: string
   isLoading: boolean
-  scoreHistory: []
 }
 
 const initialState: UserState = {
   username: '',
   isLoading: false,
-  scoreHistory: [],
 }
 
 export const userSlice = createSlice({

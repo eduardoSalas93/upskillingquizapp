@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { Colors } from '../../../theme/globalStyles/colors'
 import Welcome from '../../../i18n/locales/en/welcome.json'
+import { globalStyles } from '../../../theme/globalStyles/globalStyles'
 
 interface Props {
   username: string
@@ -18,12 +19,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     elevation: 4,
     shadowColor: Colors.primary_green,
-    shadowOpacity: 0.35,
-    shadowRadius: 5,
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
   },
   welcomingText: {
     textAlign: 'center',
@@ -43,7 +38,7 @@ const WelcomingText: React.FC<Props> = ({ username }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.containerCard}>
+      <View style={[globalStyles.defaultShadow, styles.containerCard]}>
         <Text style={styles.welcomingText}>{headerScreen}</Text>
         <Text style={styles.welcomingTextInstructions}>
           {Welcome.instructionText}

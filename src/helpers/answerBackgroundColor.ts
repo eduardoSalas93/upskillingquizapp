@@ -69,10 +69,10 @@ export const QuestionsAnswerTextColor = (
   if (indexSelected === null) {
     return Colors.black
   }
-  if (indexSelected === index) {
-    return Colors.white
-  }
-  return answer === correctAnswer ? Colors.white : Colors.black
+
+  return answer === correctAnswer && indexSelected === index
+    ? Colors.white
+    : Colors.black
 }
 /**
  * @author Eduardo Salas

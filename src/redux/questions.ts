@@ -64,7 +64,7 @@ export const QuestionSlice = createSlice({
       }
     },
     addCurrenQuestion: (state) => {
-      let currQuestion = state.questions.filter(
+      const currQuestion = state.questions.filter(
         (question, index) => index === state.questionIndex
       )[0]
       state.currentQuestion = currQuestion

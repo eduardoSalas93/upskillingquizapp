@@ -10,6 +10,13 @@ const jestConfig = {
   transformIgnorePatterns: [
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|he|@react-native-async-storage/async-storage)',
   ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '.*.svg',
+    '.*.png',
+    'jest.setup.ts',
+    'jest.config.ts',
+  ],
 }
 
 export default jestConfig

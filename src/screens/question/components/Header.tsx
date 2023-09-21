@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { globalStyles } from '../../../theme/globalStyles/globalStyles'
 import { Colors } from '../../../theme/globalStyles/colors'
 import QuestionsText from '../../../i18n/locales/en/questions.json'
+
 interface Props {
   questionsQty: number
   points: number

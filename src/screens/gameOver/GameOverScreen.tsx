@@ -60,7 +60,7 @@ const GameOverScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require('../../assets/bg.jpeg')}
+        source={require('../../assets/gameOverBg.jpeg')}
         style={styles.container}
       >
         {showAnswers ? (

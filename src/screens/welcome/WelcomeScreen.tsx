@@ -18,6 +18,7 @@ import { ButtonsOptions } from '../../data/ButtonOptions'
 import { Colors } from '../../theme/globalStyles/colors'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { logOut } from '../../redux/user'
+import RoundedButton from '../../components/roundedButton/RoundedButtton'
 
 type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Welcome>
 
@@ -28,14 +29,6 @@ const styles = StyleSheet.create({
   bodyContainer: {
     paddingTop: Platform.select({ ios: 0, android: 50 }),
     flex: 1,
-  },
-  logOutBtn: {
-    width: 40,
-    height: 40,
-    backgroundColor: Colors.red,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 })
 
@@ -76,7 +69,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that logs out and clean uuser info
    */
   const handleLogout = () => {
-    removeData()
+    removeData().catch((err) => console.log(err))
     dispatch(logOut())
     navigation.navigate(RouteNames.Login)
   }
@@ -85,15 +78,12 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.bodyContainer}>
         <View style={{ alignItems: 'flex-end', paddingHorizontal: 16 }}>
-          <View style={styles.logOutBtn}>
-            <Pressable onPress={handleLogout}>
-              <MaterialCommunityIcons
-                name='logout'
-                size={20}
-                color={Colors.white}
-              />
-            </Pressable>
-          </View>
+          <RoundedButton
+            iconName='logout'
+            iconType='material'
+            colorBtn={Colors.red}
+            action={handleLogout}
+          />
         </View>
         <WelcomingText username={username} />
         <View style={{ paddingHorizontal: 16 }}>

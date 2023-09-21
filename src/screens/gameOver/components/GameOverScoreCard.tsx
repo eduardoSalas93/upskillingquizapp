@@ -7,6 +7,7 @@ import {
   GameOverDescription,
   GameOverSubtitle,
 } from '../../../helpers/gameOverText'
+import RoundedButton from '../../../components/roundedButton/RoundedButtton'
 
 interface Props {
   points: number
@@ -113,24 +114,18 @@ const GameOverScoreCard: React.FC<Props> = ({
             marginTop: 15,
           }}
         >
-          <View
-            style={[
-              styles.roundedButtonIcon,
-              { backgroundColor: Colors.primary_green },
-            ]}
-          >
-            <Pressable onPress={handleGoHome}>
-              <FontAwesome5 name='home' size={20} color={Colors.white} />
-            </Pressable>
-          </View>
-
-          <View
-            style={[styles.roundedButtonIcon, { backgroundColor: Colors.red }]}
-          >
-            <Pressable onPress={handleTryNewQuiz}>
-              <Ionicons name='reload-sharp' size={20} color={Colors.white} />
-            </Pressable>
-          </View>
+          <RoundedButton
+            action={handleGoHome}
+            iconType='fontAwesome5'
+            colorBtn={Colors.primary_green}
+            iconName='home'
+          />
+          <RoundedButton
+            action={handleTryNewQuiz}
+            iconType='ionicons'
+            colorBtn={Colors.red}
+            iconName='reload-sharp'
+          />
         </View>
         <View style={styles.checkAnswersBtnContainer}>
           <Pressable

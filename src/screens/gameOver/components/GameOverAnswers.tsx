@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Platform,
 } from 'react-native'
 import { Colors } from '../../../theme/globalStyles/colors'
 import { DecodeText } from '../../../helpers/decodeText'
@@ -20,6 +21,7 @@ interface Props {
 const styles = StyleSheet.create({
   backArrowContainer: {
     paddingHorizontal: 16,
+    paddingTop: Platform.select({ ios: 0, android: 40 }),
   },
   answerCardContainer: {
     backgroundColor: Colors.white,
@@ -63,7 +65,7 @@ const GameOverAnswers: React.FC<Props> = ({ handleShowAnswers }) => {
   )
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View style={styles.backArrowContainer}>
         <TouchableOpacity onPress={handleShowAnswers} style={styles.backBtn}>
           <Ionicons name='md-chevron-back' size={24} color='black' />
@@ -72,7 +74,9 @@ const GameOverAnswers: React.FC<Props> = ({ handleShowAnswers }) => {
       <FlatList
         data={answeredQuestions}
         renderItem={({ item, index }) => (
-          <View style={{ marginTop: 8, paddingHorizontal: 16 }}>
+          <View
+            style={{ marginTop: 8, paddingHorizontal: 16, marginBottom: 8 }}
+          >
             <View
               style={[globalStyles.defaultShadow, styles.answerCardContainer]}
             >
@@ -104,7 +108,7 @@ const GameOverAnswers: React.FC<Props> = ({ handleShowAnswers }) => {
             </View>
           </View>
         )}
-        keyExtractor={(item) => item.question}
+        keyExtractor={(item, index) => item.question + index}
       />
     </View>
   )

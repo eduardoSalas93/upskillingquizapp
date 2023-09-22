@@ -1,4 +1,10 @@
-import { SafeAreaView, View, StyleSheet, Keyboard } from 'react-native'
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Keyboard,
+  Platform,
+} from 'react-native'
 import type { RouteNames, RouteParamsList } from '../../types/route'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import Logo from '../../atoms/Logo'
@@ -10,6 +16,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  logoMarginTop: {
+    flex: 3,
+    marginTop: Platform.select({ ios: 0, android: 50 }),
+  },
 })
 
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
@@ -20,7 +30,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
         style={styles.container}
         onTouchStart={() => Keyboard.dismiss()}
       >
-        <View style={{ flex: 3 }}>
+        <View style={styles.logoMarginTop}>
           <Logo />
         </View>
         <View style={{ flex: 9 }}>

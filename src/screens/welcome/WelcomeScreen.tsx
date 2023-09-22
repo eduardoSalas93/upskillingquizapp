@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bodyContainer: {
-    paddingTop: Platform.select({ ios: 0, android: 50 }),
+    paddingTop: Platform.select({ ios: 0, android: 30 }),
     flex: 1,
   },
 })

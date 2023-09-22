@@ -103,7 +103,7 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
       }}
     >
       <ImageBackground
-        source={require('../../assets/questionsBg.avif')}
+        source={require('../../assets/gameOverBg.jpeg')}
         style={{ flex: 1 }}
       >
         <View style={{ flex: 1, justifyContent: 'flex-start' }}>
@@ -117,7 +117,7 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
             <FlatList
               data={currentQuestion?.questionAnswers}
               renderItem={({ item, index }) => (
-                <View style={{ marginTop: 8 }}>
+                <View style={{ marginTop: 8, paddingVertical: 5 }}>
                   <AnswerItemCard
                     answer={DecodeText(item)}
                     handleAnswerSelected={handleAnswerSelected}

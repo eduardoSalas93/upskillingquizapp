@@ -11,7 +11,7 @@ interface Props {
   handleQuestions: (difficulty: string) => void
 }
 
-const MIN_HEIGHT = 180
+const MIN_HEIGHT = 160
 
 const OptionButton: React.FC<Props> = ({
   badge,

@@ -142,8 +142,6 @@ const LoginForm: React.FC<Props> = ({ navigation }) => {
       <Box style={styles.boodyContainer}>
         <Box style={[globalStyles.defaultShadow, styles.formcard]}>
           <Stack space={4} w='100%' alignItems='center'>
-            <Text>Hola</Text>
-
             <Input
               autoCapitalize='none'
               id='username'

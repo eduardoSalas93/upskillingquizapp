@@ -46,6 +46,7 @@ describe('Question Screen Component', () => {
         <QuestionScreen {...props} />
       </Provider>
     )
+
     expect(welcome).toBeTruthy()
   })
 })

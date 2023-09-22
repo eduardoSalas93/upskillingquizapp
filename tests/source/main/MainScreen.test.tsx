@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { MainScreen } from '../../../src/screens'
@@ -21,17 +21,6 @@ const createTestProps = (props: Object) => ({
 })
 
 const props: any = createTestProps({})
-
-jest.mock('../src/components')
-
-jest.mock('../src/screens/welcome/WelcomeScreen.tsx')
-jest.mock('../src/screens/welcome/components/optionButton.tsx')
-jest.mock('../src/screens/welcome/components/WelcomingText.tsx')
-jest.mock('../src/screens/question/QuestionScreen.tsx')
-jest.mock('../src/screens/question/components/Header.tsx')
-jest.mock('../src/screens/gameOver/GameOverScreen.tsx')
-jest.mock('../src/screens/gameOver/components/GameOverAnswers.tsx')
-jest.mock('../src/screens/gameOver/components/GameOverScoreCard.tsx')
 
 describe('Main Screen Component', () => {
   let store: any

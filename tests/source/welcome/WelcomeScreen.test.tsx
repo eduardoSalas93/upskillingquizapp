@@ -39,6 +39,7 @@ describe('WelcomeScreen Component', () => {
         <WelcomeScreen {...props} />
       </Provider>
     )
+
     expect(welcome).toBeTruthy()
   })
 })

@@ -17,6 +17,14 @@ const jestConfig = {
     'jest.setup.ts',
     'jest.config.ts',
   ],
+  collectCoverage: true,
+  collectCoverageFrom: [
+    '**/*.{ts,tsx}',
+    '!**/coverage/**',
+    '!**/node_modules/**',
+    '!**/babel.config.js',
+    '!**/jest.setup.ts',
+  ],
 }
 
 export default jestConfig

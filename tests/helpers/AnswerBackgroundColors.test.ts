@@ -23,23 +23,27 @@ const PropsWrongAnswer = {
 describe('Testing helpers functions', () => {
   test('The function QuestionsAnswerTextColor should return white color', () => {
     const { indexSelected, index, correctAnswer, answer } = PropsCorrectAnswer
+    const answerSelected = correctAnswer
     const textColor = QuestionsAnswerTextColor(
       indexSelected,
       index,
       correctAnswer,
-      answer
+      answer,
+      answerSelected
     )
     expect(textColor).toBe(Colors.white)
   })
-  test('The function QuestionsAnswerTextColor should return black color', () => {
+  test('The function QuestionsAnswerTextColor should return white color', () => {
     const { indexSelected, index, correctAnswer, answer } = PropsWrongAnswer
+    const answerSelected = answer
     const textColor = QuestionsAnswerTextColor(
       indexSelected,
       index,
       correctAnswer,
-      answer
+      answer,
+      answerSelected
     )
-    expect(textColor).toBe(Colors.black)
+    expect(textColor).toBe(Colors.white)
   })
   test('The function GameOveranswerBg should return Green color', () => {
     const { correctAnswer, answer } = PropsCorrectAnswer

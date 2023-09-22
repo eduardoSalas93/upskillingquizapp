@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react-native'
+import { render, screen } from '@testing-library/react-native'
 import LoginForm from '../../../src/screens/auth/components/LoginForm'
 import { configureStore } from '@reduxjs/toolkit'
 import { userSlice } from '../../../src/redux/user'
@@ -31,7 +31,6 @@ describe('LoginForm component testing', () => {
         <LoginForm {...props} />
       </Provider>
     )
-
     expect(loginForm).toBeTruthy()
   })
 })

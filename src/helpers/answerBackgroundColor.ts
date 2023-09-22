@@ -64,15 +64,26 @@ export const QuestionsAnswerTextColor = (
   indexSelected: number | null,
   index: number,
   correctAnswer: string | null,
-  answer: string
+  answer: string,
+  answerSelected: string
 ) => {
   if (indexSelected === null) {
     return Colors.black
   }
 
-  return answer === correctAnswer && indexSelected === index
-    ? Colors.white
-    : Colors.black
+  if (indexSelected === index) {
+    if (answerSelected === correctAnswer) {
+      return Colors.white
+    } else {
+      return Colors.white
+    }
+  }
+
+  if (answer === correctAnswer) {
+    return Colors.white
+  }
+
+  return Colors.black
 }
 /**
  * @author Eduardo Salas

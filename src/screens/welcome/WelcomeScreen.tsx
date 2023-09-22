@@ -10,7 +10,6 @@ import {
 import { RouteNames, RouteParamsList } from '../../types/route'
 import { AppDispatch, RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { getQuestions, saveDifficulty } from '../../redux/questions'
 import WelcomingText from './components/WelcomingText'
 import OptionButton from './components/OptionButton'
@@ -18,7 +17,7 @@ import { ButtonsOptions } from '../../data/ButtonOptions'
 import { Colors } from '../../theme/globalStyles/colors'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { logOut } from '../../redux/user'
-import RoundedButton from '../../components/roundedButton/RoundedButtton'
+import { RoundedButton } from '../../components'
 
 type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Welcome>
 

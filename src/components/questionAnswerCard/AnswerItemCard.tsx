@@ -63,7 +63,8 @@ const AnswerItemCard: React.FC<Props> = ({
                     answerIndex,
                     index,
                     correctAnswer,
-                    answer
+                    answer,
+                    answerSelected
                   ),
                 }}
               >

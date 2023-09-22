@@ -9,9 +9,8 @@ import {
 import { RouteNames, RouteParamsList } from '../../types/route'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
-import QuestionCard from '../../components/questionAnswerCard/QuestionCard'
+import { QuestionCard, AnswerItemCard } from '../../components'
 import { Colors } from '../../theme/globalStyles/colors'
-import AnswerItemCard from '../../components/questionAnswerCard/AnswerItemCard'
 import DividerAtm from '../../atoms/Divider'
 import SpinnerAtm from '../../atoms/spininer'
 import Header from './components/Header'
@@ -63,10 +62,10 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
       answerSelected: answer,
     }
     setTimeout(() => {
-      setAnswerSelected(null)
-      setAnswerIndex(null)
       dispatch(changeQuestionIndex(questionAnswered))
       setquestionsQty((prev) => prev - 1)
+      setAnswerSelected(null)
+      setAnswerIndex(null)
     }, 1500)
   }
 
@@ -76,7 +75,7 @@ const QuestionScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that detects when the questionIndex has changed and update the question to the next one
    */
   useEffect(() => {
-    if (!currentQuestion) return
+    if (currentQuestion === null) return
     if (questionIndex < 20) {
       dispatch(addCurrenQuestion())
     } else {

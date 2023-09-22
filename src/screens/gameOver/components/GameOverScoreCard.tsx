@@ -1,13 +1,13 @@
 import { Pressable, View, Text, StyleSheet } from 'react-native'
 import { Colors } from '../../../theme/globalStyles/colors'
 import { globalStyles } from '../../../theme/globalStyles/globalStyles'
-import { FontAwesome5, Ionicons, Feather } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 import GameOverScreenText from '../../../i18n/locales/en/game-over.json'
 import {
   GameOverDescription,
   GameOverSubtitle,
 } from '../../../helpers/gameOverText'
-import RoundedButton from '../../../components/roundedButton/RoundedButtton'
+import { RoundedButton } from '../../../components'
 
 interface Props {
   points: number

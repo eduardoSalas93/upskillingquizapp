@@ -1,3 +1,4 @@
+import React from 'react'
 import { render } from '@testing-library/react-native'
 import App from '../App'
 import { Provider } from 'react-redux'
@@ -13,11 +14,11 @@ const store = configureStore({
 
 describe('App Component', () => {
   test('renders correctly', async () => {
-    // const appComponent = render(
-    //   <Provider store={store}>
-    //     <App />
-    //   </Provider>
-    // )
-    // expect(appComponent).toBeTruthy()
+    const appComponent = render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+    expect(appComponent).toBeTruthy()
   })
 })

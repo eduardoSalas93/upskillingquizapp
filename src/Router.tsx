@@ -1,5 +1,4 @@
 import { NavigationContainer } from '@react-navigation/native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { LoginScreen, MainScreen } from './screens'
 import { RouteNames, RouteParamsList } from './types/route'
@@ -7,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { logIn } from './redux/user'
 import SpinnerAtm from './atoms/spininer'
+import { GetDataLocal } from './helpers/storeData'
 
 const Stack = createNativeStackNavigator<RouteParamsList>()
 
@@ -23,7 +23,7 @@ const Router = () => {
    */
   const getData = async () => {
     try {
-      const value = await AsyncStorage.getItem('@username')
+      const value = await GetDataLocal('@username')
       if (value !== null) {
         // value previously stored
         setIsLogged(true)
@@ -39,8 +39,11 @@ const Router = () => {
     }
   }
   useEffect(() => {
-    setLoading(true)
-    getData()
+    const getUserData = async () => {
+      setLoading(true)
+      await getData()
+    }
+    getUserData().catch((err) => console.log(err))
   }, [])
   /**
    * @author Eduardo Salas

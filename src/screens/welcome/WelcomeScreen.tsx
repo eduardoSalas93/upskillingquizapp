@@ -5,7 +5,6 @@ import {
   Platform,
   StyleSheet,
   FlatList,
-  Pressable,
 } from 'react-native'
 import { RouteNames, RouteParamsList } from '../../types/route'
 import { AppDispatch, RootState } from '../../redux/store'
@@ -15,9 +14,9 @@ import WelcomingText from './components/WelcomingText'
 import OptionButton from './components/OptionButton'
 import { ButtonsOptions } from '../../data/ButtonOptions'
 import { Colors } from '../../theme/globalStyles/colors'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { logOut } from '../../redux/user'
 import { RoundedButton } from '../../components'
+import { RemoveDataLocal } from '../../helpers/storeData'
 
 type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Welcome>
 
@@ -54,12 +53,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method for  removing data from storage
    */
   const removeData = async () => {
-    try {
-      await AsyncStorage.removeItem('@username')
-    } catch (error) {
-      // Error saving data
-      console.error(error)
-    }
+    await RemoveDataLocal('@username')
   }
   /**
    * @author Eduardo Salas
@@ -68,7 +62,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    * @description Method that logs out and clean uuser info
    */
   const handleLogout = () => {
-    removeData().catch((err) => console.log(err))
+    removeData().catch((error) => console.log(error))
     dispatch(logOut())
     navigation.navigate(RouteNames.Login)
   }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import {
   Box,
@@ -11,7 +11,6 @@ import {
   Stack,
 } from 'native-base'
 import { useDispatch } from 'react-redux'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 import { RouteNames, RouteParamsList } from '../../../types/route'
 import { AlertMessage } from '../../../components'
@@ -21,6 +20,7 @@ import { logIn } from '../../../redux/user'
 import { Colors } from '../../../theme/globalStyles/colors'
 import AuthText from '../../../i18n/locales/en/auth.json'
 import { globalStyles } from '../../../theme/globalStyles/globalStyles'
+import { StoreDataLocal } from '../../../helpers/storeData'
 
 type NavProps = NativeStackScreenProps<RouteParamsList, RouteNames.Login>
 interface Props {
@@ -93,12 +93,7 @@ const LoginForm: React.FC<Props> = ({ navigation }) => {
    * @description Method for adding user to localStorage
    */
   const storeData = async () => {
-    try {
-      await AsyncStorage.setItem('@username', userLogin.username)
-    } catch (error) {
-      // Error saving data
-      console.error(error)
-    }
+    await StoreDataLocal('@username', userLogin.username)
   }
 
   /**

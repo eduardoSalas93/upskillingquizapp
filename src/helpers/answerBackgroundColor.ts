@@ -98,6 +98,6 @@ export const QuestionCardBorderColor = (difficulty: string | undefined) => {
     case 'medium':
       return Colors.secondary_green
     default:
-      return Colors.secundary_blue
+      return Colors.red
   }
 }

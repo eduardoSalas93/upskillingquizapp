@@ -58,3 +58,17 @@ export const questions = [
     ],
   },
 ]
+
+export const PropsCorrectAnswer = {
+  indexSelected: 2,
+  index: 2,
+  correctAnswer: 'Correct Answer',
+  answer: 'Correct Answer',
+}
+
+export const PropsWrongAnswer = {
+  indexSelected: 2,
+  index: 2,
+  correctAnswer: 'Correct Answer',
+  answer: 'Wrong Answer',
+}

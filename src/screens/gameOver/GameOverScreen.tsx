@@ -4,9 +4,10 @@ import { RouteNames, RouteParamsList } from '../../types/route'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../redux/store'
 import { useState } from 'react'
-import { resetData, getQuestions } from '../../redux/questions'
+import { resetData, getQuestions, saveQuestions } from '../../redux/questions'
 import GameOverScoreCard from './components/GameOverScoreCard'
 import GameOverAnswers from './components/GameOverAnswers'
+import { getQuestionsApi } from '../../helpers/questionsApiRequest'
 
 type Props = NativeStackScreenProps<RouteParamsList, RouteNames.GameOver>
 
@@ -42,8 +43,9 @@ const GameOverScreen: React.FC<Props> = ({ navigation }) => {
    * @name handleTryNewQuiz
    * @description Method that handles the retry action
    */
-  const handleTryNewQuiz = () => {
-    dispatch(getQuestions(difficultySelected))
+  const handleTryNewQuiz = async () => {
+    const questionsArr = await getQuestionsApi(difficultySelected.toLowerCase())
+    dispatch(saveQuestions(questionsArr))
     navigation.navigate(RouteNames.Question)
   }
   /**

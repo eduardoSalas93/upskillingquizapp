@@ -9,7 +9,7 @@ import {
 import { RouteNames, RouteParamsList } from '../../types/route'
 import { AppDispatch, RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { getQuestions, saveDifficulty } from '../../redux/questions'
+import { saveDifficulty, saveQuestions } from '../../redux/questions'
 import WelcomingText from './components/WelcomingText'
 import OptionButton from './components/OptionButton'
 import { ButtonsOptions } from '../../data/ButtonOptions'
@@ -17,6 +17,7 @@ import { Colors } from '../../theme/globalStyles/colors'
 import { logOut } from '../../redux/user'
 import { RoundedButton } from '../../components'
 import { RemoveDataLocal } from '../../helpers/storeData'
+import { getQuestionsApi } from '../../helpers/questionsApiRequest'
 
 type Props = NativeStackScreenProps<RouteParamsList, RouteNames.Welcome>
 
@@ -40,9 +41,10 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
    * @name handleShowAnswers
    * @description Method that navigates to question screen and fetch the questions
    */
-  const handleQuestions = (difficulty: string) => {
+  const handleQuestions = async (difficulty: string) => {
     dispatch(saveDifficulty(difficulty.toLowerCase()))
-    dispatch(getQuestions(difficulty.toLowerCase()))
+    const questionsArr = await getQuestionsApi(difficulty.toLowerCase())
+    dispatch(saveQuestions(questionsArr))
     navigation.navigate(RouteNames.Question)
   }
 

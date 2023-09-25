@@ -1,34 +1,9 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { GameDiff } from '../types/gameDiff'
+import { createSlice } from '@reduxjs/toolkit'
 import {
   QuestionAnsweredItem,
   QuestionItem,
-  QuestionResp,
+  QuestionQty,
 } from '../types/question'
-
-const QUESTION_QTY_REQ = 20
-
-export const getQuestions = createAsyncThunk(
-  'questions',
-  async (difficulty: string) => {
-    const resp = await fetch(
-      `https://opentdb.com/api.php?amount=${QUESTION_QTY_REQ}${
-        difficulty !== GameDiff.default.toLowerCase()
-          ? `&difficulty=${difficulty}`
-          : ''
-      }`
-    )
-    const { results }: QuestionResp = await resp.json()
-    const questionArr = results.map((question) => ({
-      ...question,
-      questionAnswers: question.incorrect_answers
-        .concat(question.correct_answer)
-        .sort((a, b) => a.localeCompare(b)),
-    }))
-
-    return questionArr
-  }
-)
 
 export interface QuestionState {
   isLoading: boolean
@@ -56,10 +31,20 @@ export const QuestionSlice = createSlice({
   name: 'questions',
   initialState,
   reducers: {
+    saveQuestions: (state, action) => {
+      state.isLoading = false
+      state.questions = action.payload
+      state.currentQuestion = action.payload[0]
+      state.currentQuestionCorrectAnswer = action.payload[0].correct_answer
+      state.questionIndex = 0
+      state.points = 0
+      state.answeredQuestions = []
+    },
     changeQuestionIndex: (state, action) => {
-      if (action.payload)
+      if (action.payload !== null && action.payload !== undefined) {
         state.answeredQuestions = [...state.answeredQuestions, action.payload]
-      if (state.questionIndex < QUESTION_QTY_REQ) {
+      }
+      if (state.questionIndex < QuestionQty) {
         state.questionIndex = state.questionIndex + 1
       }
     },
@@ -86,24 +71,6 @@ export const QuestionSlice = createSlice({
       state.difficultySelected = action.payload
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(getQuestions.pending, (state, action) => {
-      state.isLoading = true
-    }),
-      builder.addCase(getQuestions.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.questions = action.payload
-        state.currentQuestion = action.payload[0]
-        state.currentQuestionCorrectAnswer = action.payload[0].correct_answer
-        state.questionIndex = 0
-        state.points = 0
-        state.answeredQuestions = []
-      }),
-      builder.addCase(getQuestions.rejected, (state, action) => {
-        state.isLoading = false
-        console.log('Error', action.payload)
-      })
-  },
 })
 
 // Action creators are generated for each case reducer function
@@ -113,6 +80,7 @@ export const {
   resetData,
   addPoints,
   saveDifficulty,
+  saveQuestions,
 } = QuestionSlice.actions
 
 export default QuestionSlice.reducer

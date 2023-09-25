@@ -23,3 +23,5 @@ export interface QuestionAnsweredItem {
   questionAnswers: string[]
   answerSelected: string
 }
+
+export const QuestionQty = 20
